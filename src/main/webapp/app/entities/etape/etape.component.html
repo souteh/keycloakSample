@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="keycloakSampleApp.etape.home.title">Etapes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-etape" [routerLink]="['/etape/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="keycloakSampleApp.etape.home.createLabel">
+            Create a new Etape
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="etapes?.length === 0">
+        <span jhiTranslate="keycloakSampleApp.etape.home.notFound">No etapes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="etapes && etapes.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idetape"><span jhiTranslate="keycloakSampleApp.etape.idetape">Idetape</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="libelleetape"><span jhiTranslate="keycloakSampleApp.etape.libelleetape">Libelleetape</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="statutetape"><span jhiTranslate="keycloakSampleApp.etape.statutetape">Statutetape</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="heureexecutionetape"><span jhiTranslate="keycloakSampleApp.etape.heureexecutionetape">Heureexecutionetape</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="codeetape"><span jhiTranslate="keycloakSampleApp.etape.codeetape">Codeetape</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idtfj.id"><span jhiTranslate="keycloakSampleApp.etape.idtfj">Idtfj</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let etape of etapes ;trackBy: trackId">
+                    <td><a [routerLink]="['/etape', etape.id, 'view']">{{ etape.id }}</a></td>
+                    <td>{{ etape.idetape }}</td>
+                    <td>{{ etape.libelleetape }}</td>
+                    <td>{{ etape.statutetape }}</td>
+                    <td>{{ etape.heureexecutionetape }}</td>
+                    <td>{{ etape.codeetape }}</td>
+                    <td>
+                        <div *ngIf="etape.idtfj">
+                            <a [routerLink]="['/tfj', etape.idtfj?.id, 'view']" >{{ etape.idtfj?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/etape', etape.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/etape', etape.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(etape)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="etapes && etapes.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

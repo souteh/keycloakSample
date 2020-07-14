@@ -1,0 +1,24 @@
+{
+  "keycloakSampleApp": {
+    "messageerreur": {
+      "home": {
+        "title": "Messageerreurs",
+        "createLabel": "Create a new Messageerreur",
+        "createOrEditLabel": "Create or edit a Messageerreur",
+        "notFound": "No Messageerreurs found"
+      },
+      "created": "A new Messageerreur is created with identifier {{ param }}",
+      "updated": "A Messageerreur is updated with identifier {{ param }}",
+      "deleted": "A Messageerreur is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Messageerreur {{ id }}?"
+      },
+      "detail": {
+        "title": "Messageerreur"
+      },
+      "idmessage": "Idmessage",
+      "description": "Description",
+      "idaction": "Idaction"
+    }
+  }
+}

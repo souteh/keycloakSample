@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="messageerreur">
+            <h2><span jhiTranslate="keycloakSampleApp.messageerreur.detail.title">Messageerreur</span> {{ messageerreur.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="keycloakSampleApp.messageerreur.idmessage">Idmessage</span></dt>
+                <dd>
+                    <span>{{ messageerreur.idmessage }}</span>
+                </dd>
+                <dt><span jhiTranslate="keycloakSampleApp.messageerreur.description">Description</span></dt>
+                <dd>
+                    <span>{{ messageerreur.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="keycloakSampleApp.messageerreur.idaction">Idaction</span></dt>
+                <dd>
+                    <div *ngIf="messageerreur.idaction">
+                        <a [routerLink]="['/action', messageerreur.idaction?.id, 'view']">{{ messageerreur.idaction?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/messageerreur', messageerreur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="keycloakSampleApp.actionparam.home.title">Actionparams</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-actionparam" [routerLink]="['/actionparam/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="keycloakSampleApp.actionparam.home.createLabel">
+            Create a new Actionparam
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="actionparams?.length === 0">
+        <span jhiTranslate="keycloakSampleApp.actionparam.home.notFound">No actionparams found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="actionparams && actionparams.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idactionparam"><span jhiTranslate="keycloakSampleApp.actionparam.idactionparam">Idactionparam</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="libelleactionparam"><span jhiTranslate="keycloakSampleApp.actionparam.libelleactionparam">Libelleactionparam</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="codeactionparam"><span jhiTranslate="keycloakSampleApp.actionparam.codeactionparam">Codeactionparam</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="idetapeparam.id"><span jhiTranslate="keycloakSampleApp.actionparam.idetapeparam">Idetapeparam</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let actionparam of actionparams ;trackBy: trackId">
+                    <td><a [routerLink]="['/actionparam', actionparam.id, 'view']">{{ actionparam.id }}</a></td>
+                    <td>{{ actionparam.idactionparam }}</td>
+                    <td>{{ actionparam.libelleactionparam }}</td>
+                    <td>{{ actionparam.codeactionparam }}</td>
+                    <td>
+                        <div *ngIf="actionparam.idetapeparam">
+                            <a [routerLink]="['/etapeparam', actionparam.idetapeparam?.id, 'view']" >{{ actionparam.idetapeparam?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/actionparam', actionparam.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/actionparam', actionparam.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(actionparam)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="actionparams && actionparams.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>
