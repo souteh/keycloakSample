@@ -1,0 +1,24 @@
+{
+  "keycloakSampleApp": {
+    "etapeparam": {
+      "home": {
+        "title": "Etapeparams",
+        "createLabel": "Create a new Etapeparam",
+        "createOrEditLabel": "Create or edit a Etapeparam",
+        "notFound": "No Etapeparams found"
+      },
+      "created": "A new Etapeparam is created with identifier {{ param }}",
+      "updated": "A Etapeparam is updated with identifier {{ param }}",
+      "deleted": "A Etapeparam is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Etapeparam {{ id }}?"
+      },
+      "detail": {
+        "title": "Etapeparam"
+      },
+      "idetapeparam": "Idetapeparam",
+      "libelleetapeparam": "Libelleetapeparam",
+      "codeetapeparam": "Codeetapeparam"
+    }
+  }
+}

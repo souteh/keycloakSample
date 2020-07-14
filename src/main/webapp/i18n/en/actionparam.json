@@ -1,0 +1,25 @@
+{
+  "keycloakSampleApp": {
+    "actionparam": {
+      "home": {
+        "title": "Actionparams",
+        "createLabel": "Create a new Actionparam",
+        "createOrEditLabel": "Create or edit a Actionparam",
+        "notFound": "No Actionparams found"
+      },
+      "created": "A new Actionparam is created with identifier {{ param }}",
+      "updated": "A Actionparam is updated with identifier {{ param }}",
+      "deleted": "A Actionparam is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Actionparam {{ id }}?"
+      },
+      "detail": {
+        "title": "Actionparam"
+      },
+      "idactionparam": "Idactionparam",
+      "libelleactionparam": "Libelleactionparam",
+      "codeactionparam": "Codeactionparam",
+      "idetapeparam": "Idetapeparam"
+    }
+  }
+}

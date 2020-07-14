@@ -1,0 +1,27 @@
+{
+  "keycloakSampleApp": {
+    "etape": {
+      "home": {
+        "title": "Etapes",
+        "createLabel": "Create a new Etape",
+        "createOrEditLabel": "Create or edit a Etape",
+        "notFound": "No Etapes found"
+      },
+      "created": "A new Etape is created with identifier {{ param }}",
+      "updated": "A Etape is updated with identifier {{ param }}",
+      "deleted": "A Etape is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Etape {{ id }}?"
+      },
+      "detail": {
+        "title": "Etape"
+      },
+      "idetape": "Idetape",
+      "libelleetape": "Libelleetape",
+      "statutetape": "Statutetape",
+      "heureexecutionetape": "Heureexecutionetape",
+      "codeetape": "Codeetape",
+      "idtfj": "Idtfj"
+    }
+  }
+}

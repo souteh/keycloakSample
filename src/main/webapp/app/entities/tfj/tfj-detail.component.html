@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tfj">
+            <h2><span jhiTranslate="keycloakSampleApp.tfj.detail.title">Tfj</span> {{ tfj.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="keycloakSampleApp.tfj.idtfj">Idtfj</span></dt>
+                <dd>
+                    <span>{{ tfj.idtfj }}</span>
+                </dd>
+                <dt><span jhiTranslate="keycloakSampleApp.tfj.datetfj">Datetfj</span></dt>
+                <dd>
+                    <span>{{ tfj.datetfj }}</span>
+                </dd>
+                <dt><span jhiTranslate="keycloakSampleApp.tfj.statuttfj">Statuttfj</span></dt>
+                <dd>
+                    <span>{{ tfj.statuttfj }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tfj', tfj.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

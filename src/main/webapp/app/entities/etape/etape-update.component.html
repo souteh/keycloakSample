@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-etape-heading" jhiTranslate="keycloakSampleApp.etape.home.createOrEditLabel">Create or edit a Etape</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="keycloakSampleApp.etape.idetape" for="field_idetape">Idetape</label>
+                    <input type="number" class="form-control" name="idetape" id="field_idetape"
+                           formControlName="idetape"/>
+                    <div *ngIf="editForm.get('idetape')!.invalid && (editForm.get('idetape')!.dirty || editForm.get('idetape')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('idetape')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('idetape')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="keycloakSampleApp.etape.libelleetape" for="field_libelleetape">Libelleetape</label>
+                    <input type="text" class="form-control" name="libelleetape" id="field_libelleetape"
+                           formControlName="libelleetape"/>
+                    <div *ngIf="editForm.get('libelleetape')!.invalid && (editForm.get('libelleetape')!.dirty || editForm.get('libelleetape')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('libelleetape')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 254 }">
+                        This field cannot be longer than 254 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="keycloakSampleApp.etape.statutetape" for="field_statutetape">Statutetape</label>
+                    <input type="text" class="form-control" name="statutetape" id="field_statutetape"
+                           formControlName="statutetape"/>
+                    <div *ngIf="editForm.get('statutetape')!.invalid && (editForm.get('statutetape')!.dirty || editForm.get('statutetape')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('statutetape')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 254 }">
+                        This field cannot be longer than 254 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="keycloakSampleApp.etape.heureexecutionetape" for="field_heureexecutionetape">Heureexecutionetape</label>
+                    <input type="text" class="form-control" name="heureexecutionetape" id="field_heureexecutionetape"
+                           formControlName="heureexecutionetape"/>
+                    <div *ngIf="editForm.get('heureexecutionetape')!.invalid && (editForm.get('heureexecutionetape')!.dirty || editForm.get('heureexecutionetape')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('heureexecutionetape')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 254 }">
+                        This field cannot be longer than 254 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="keycloakSampleApp.etape.codeetape" for="field_codeetape">Codeetape</label>
+                    <input type="text" class="form-control" name="codeetape" id="field_codeetape"
+                           formControlName="codeetape"/>
+                    <div *ngIf="editForm.get('codeetape')!.invalid && (editForm.get('codeetape')!.dirty || editForm.get('codeetape')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codeetape')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 254 }">
+                        This field cannot be longer than 254 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="keycloakSampleApp.etape.idtfj" for="field_idtfj">Idtfj</label>
+                    <select class="form-control" id="field_idtfj" name="idtfj" formControlName="idtfj">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tfjOption.id === editForm.get('idtfj')!.value?.id ? editForm.get('idtfj')!.value : tfjOption" *ngFor="let tfjOption of tfjs; trackBy: trackById">{{ tfjOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
